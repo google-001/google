@@ -1,0 +1,161 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.desktop{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+}
+.body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100dvh;
+    font-family: arial;
+}
+.sideone,.sidetwo{
+    display: flex;
+    border: 2px double grey;
+    width: max-content;
+    padding: 100px;
+    padding-top: 60px;
+    border-radius: 20px;
+    justify-content: space-around;
+    flex-direction: column;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.sidetwo{
+    display: none;
+}
+.centeredside{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.img{
+    background: url(Capture.JPG);
+    background-size: cover;
+    height: 50px;
+    width: 50px;
+    background-position: center;
+    margin-bottom: 30px;
+}
+.signintogoogle{
+    font-size: 30px;
+}
+.useyouraccount{
+    font-size: 25px;
+    color: rgba(0, 0, 0, 0.705);
+    font-family: calibri;
+    margin-bottom: 20px;
+}
+.inputemail{
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+}
+.inputemail label{
+    font-size: 15px;
+    font-family: arial;
+    color: rgb(41 , 112, 194);
+    padding: 4px;
+    background-color: white;
+    position: absolute;
+    margin-top: -13px;
+    margin-left: 10px;
+    font-family: calibri;
+    font-weight: bolder;
+}
+.inputemail input{
+    padding-left: 10px;
+    width: 250px;
+    height: 40px;
+    border: 2px solid rgb(41 , 112, 194);
+    border-radius: 4px;
+}
+.inputemail input:focus{
+    outline: 3px double rgb(41 , 112, 194);
+}
+.forgotemail{
+    display: flex;
+    justify-content: start;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+.forgotemail a{
+    color: rgb(41 , 112, 194);
+    text-decoration: none;
+    font-weight: bolder;
+    font-family: calibri;
+}
+.createaccountandnextbutton{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.createaccount{
+    width: max-content;
+    padding: 3px;
+    background-color: rgba(128, 128, 128, 0.116);
+}
+.createaccount a{
+    text-decoration: none;
+    color: rgb(41, 112, 194);
+    font-weight: bold;
+}
+.nextbutton button,.continuebutton button{
+background-color: rgb(41 , 112, 194);
+    padding: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: max-content;
+    border: 3px double white;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    height: 40px;
+    display: none;
+}
+#emailreplace{
+    width: 250px;
+    border-radius: 30px;
+    height: 30px;
+    border: 3px double rgba(0, 0, 0, 0.596);
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+.continuebutton{
+    display: flex;
+    justify-content: flex-end;
+}
+.passwordshow{
+    display: none;
+}
+.checkbox{
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+}
+#check{
+    width: 25px;
+    height: 25px;
+    margin-right: 20px;
+}
+#goback{
+    width: 100%;
+    height: 100%;
+}
+#my-form-status{
+    color: red;
+    font-size: 15px;
+    font-style: italic;
+}
