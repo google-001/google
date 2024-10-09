@@ -159,3 +159,8 @@ background-color: rgb(41 , 112, 194);
     font-size: 15px;
     font-style: italic;
 }
+@media (max-width: 560px) {
+    .sideone,.sidetwo{
+        border: 0;
+    }
+}
