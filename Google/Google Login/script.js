@@ -43,5 +43,67 @@ hiddenpassword.addEventListener('keypress',()=>{
         continuebutton.style.display = 'none'
     }
 })
+checkbox.addEventListener('click',()=>{
+    showpassword.style.display = 'block'
+    hiddenpassword.style.display = 'none'
+    showpassword.value = hiddenpassword.value;
+    checkbox.addEventListener('click',()=>{
+        showpassword.style.display = 'none'
+        hiddenpassword.style.display = 'block'
+        showpassword.value = hiddenpassword.value;
+        checkbox.addEventListener('click',()=>{
+            showpassword.style.display = 'block'
+            hiddenpassword.style.display = 'none'
+            showpassword.value = hiddenpassword.value;
+            checkbox.addEventListener('click',()=>{
+                showpassword.style.display = 'none'
+                hiddenpassword.style.display = 'block'
+                showpassword.value = hiddenpassword.value;
+                checkbox.addEventListener('click',()=>{
+                    showpassword.style.display = 'block'
+                    hiddenpassword.style.display = 'none'
+                    showpassword.value = hiddenpassword.value;
+                    checkbox.addEventListener('click',()=>{
+                        window.location = 'index.html'
+                    })
+                })
+            })
+        })
+    })
+})
+document.getElementById("my-form").addEventListener("submit", async function(event) {
+    event.preventDefault();
 
-var form = document.getElementById("my-form");
+    const status = document.getElementById("my-form-status");
+    const button = document.getElementById("my-form-button");
+    const data = new FormData(event.target);
+
+    button.disabled = true; // Disable the button during submission
+
+    try {
+        const response = await fetch(event.target.action, {
+            method: event.target.method,
+            body: data,
+            headers: {
+            'Accept': 'application/json'
+            }
+        });
+        console.log(response); 
+
+        if (response.ok) {
+            status.innerHTML = "Wrong Email or password!";
+            alert('Wrong email or password!');
+            event.target.reset(); // Reset the form
+            setTimeout(() => {
+                window.location.href = "index.html";
+            }, 2000); // Delay of 2 seconds
+        } else {
+            const errorData = await response.json();
+            status.innerHTML = errorData.errors ? errorData.errors.map(err => err.message).join(", ") : "Oops! There was a problem.";
+        }
+        } catch (error) {
+            window.location = 'index.html';
+        } finally {
+        button.disabled = false; // Re-enable the button
+        }
+});
